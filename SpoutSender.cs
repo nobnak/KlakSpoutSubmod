@@ -29,6 +29,8 @@ namespace Klak.Spout
             set { _clearAlpha = value; }
         }
 
+        public SpoutSenderTexture.Data Data { get { return data; } set { data = value; } }
+
         #region MonoBehaviour functions
         void OnEnable()
         {
