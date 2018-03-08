@@ -35,7 +35,7 @@ namespace Klak.Spout
             targetCam = GetComponent<Camera>();
             senderTexture = new SpoutSenderTexture();
             EnabledOnEnable.Invoke(enabled);
-            EnabledOnDisable.Invoke(enabled);
+            EnabledOnDisable.Invoke(!enabled);
         }
         void OnDisable()
         {
@@ -44,7 +44,7 @@ namespace Klak.Spout
                 senderTexture.Dispose();
                 senderTexture = null;
             }
-            EnabledOnEnable.Invoke(!enabled);
+            EnabledOnEnable.Invoke(enabled);
             EnabledOnDisable.Invoke(!enabled);
         }
 
