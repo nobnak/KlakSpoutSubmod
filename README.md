@@ -10,7 +10,7 @@
 git submodule add https://github.com/nobnak/KlakSpout.git Assets/Packages/KlakSpout
 ```
 
-### (Spout) gather camera
+### Create (Spout) gather camera
  - Add a camera
    - ClearFlags : Don't clear
    - Culling musk : Nothing
