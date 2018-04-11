@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Klak.Spout {
@@ -47,6 +47,7 @@ namespace Klak.Spout {
         public virtual RenderTexture GetTemporary() {
             if (currValidity && temporaryTexture == null) {
                 temporaryTexture = RenderTexture.GetTemporary(curr.width, curr.height);
+				temporaryTexture.antiAliasing = QualitySettings.antiAliasing;
             }
             return temporaryTexture;
         }
