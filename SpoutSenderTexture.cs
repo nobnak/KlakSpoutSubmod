@@ -19,7 +19,8 @@ namespace Klak.Spout {
         public virtual void Dispose() {
             ClearSender();
             ClearSharedTexture();
-        }
+			ClearTemporaryTexture();
+		}
         #endregion
         
         public static bool InputValidity(Data data) {
@@ -48,6 +49,7 @@ namespace Klak.Spout {
             if (currValidity && temporaryTexture == null) {
                 temporaryTexture = RenderTexture.GetTemporary(curr.width, curr.height);
 				temporaryTexture.antiAliasing = QualitySettings.antiAliasing;
+				temporaryTexture.useMipMap = false;
             }
             return temporaryTexture;
         }
