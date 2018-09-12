@@ -22,7 +22,7 @@ namespace Klak.Spout {
 			ClearTemporaryTexture();
 		}
         #endregion
-        
+
         public static bool InputValidity(Data data) {
             return
                 !string.IsNullOrEmpty(data.name)
@@ -47,9 +47,7 @@ namespace Klak.Spout {
         }
         public virtual RenderTexture GetTemporary() {
             if (currValidity && temporaryTexture == null) {
-                temporaryTexture = RenderTexture.GetTemporary(curr.width, curr.height);
-				temporaryTexture.antiAliasing = QualitySettings.antiAliasing;
-				temporaryTexture.useMipMap = false;
+				temporaryTexture = RenderTexture.GetTemporary(curr.width, curr.height);
             }
             return temporaryTexture;
         }
@@ -72,7 +70,7 @@ namespace Klak.Spout {
 
             var width = PluginEntry.GetTextureWidth(sender);
             var height = PluginEntry.GetTextureHeight(sender);
-            sharedTexture = Texture2D.CreateExternalTexture(width, height, 
+            sharedTexture = Texture2D.CreateExternalTexture(width, height,
                 TextureFormat.ARGB32, false, false, ptr);
             Debug.LogFormat("Build Texture ({0}x{1})", width, height);
             return true;
@@ -109,7 +107,7 @@ namespace Klak.Spout {
             public string name;
             public int width;
             public int height;
-            
+
 
             public override bool Equals(object obj) {
                 var b = (Data)obj;

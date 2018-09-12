@@ -1,4 +1,4 @@
-﻿// KlakSpout - Spout realtime video sharing plugin for Unity
+// KlakSpout - Spout realtime video sharing plugin for Unity
 // https://github.com/keijiro/KlakSpout
 using UnityEngine;
 
@@ -11,11 +11,17 @@ namespace Klak.Spout
     public class SpoutSender : MonoBehaviour {
 
         [SerializeField] bool _clearAlpha = true;
-        [SerializeField] protected SpoutSenderTexture.Data data;
+		[SerializeField]
+		protected SpoutSenderTexture.Data data =
+			new SpoutSenderTexture.Data() {
+				name = "UnitySender",
+				height = 1080,
+				width = 1920
+			};
 
-        [SerializeField] BoolEvent EnabledOnEnable;
-        [SerializeField] BoolEvent EnabledOnDisable;
-        [SerializeField] RenderTextureEvent EventOnUpdateTexture;
+		[SerializeField] BoolEvent EnabledOnEnable = new BoolEvent();
+		[SerializeField] BoolEvent EnabledOnDisable = new BoolEvent();
+		[SerializeField] RenderTextureEvent EventOnUpdateTexture = new RenderTextureEvent();
 
         protected Camera targetCam;
         protected RenderTexture pushedTargetTexture;
@@ -56,7 +62,7 @@ namespace Klak.Spout
             SetTargetTexture(senderTexture.GetTemporary());
             PluginEntry.Poll();
         }
-        
+
         void OnRenderImage(RenderTexture source, RenderTexture destination)
         {
             var sharedTexture = senderTexture.SharedTexture();

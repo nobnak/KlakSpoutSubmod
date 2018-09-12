@@ -7,9 +7,10 @@ namespace Klak.Spout
 {
     public static class PluginEntry
     {
-        #region Plugin polling
 
-        static int _lastUpdateFrame = -1;
+		#region Plugin polling
+
+		static int _lastUpdateFrame = -1;
 
         public static void Poll()
         {
@@ -20,9 +21,17 @@ namespace Klak.Spout
             }
         }
 
-        #endregion
+		#endregion
 
-        #region Native plugin interface
+		#region Native plugin interface
+		[UnmanagedFunctionPointer(CallingConvention.StdCall)]
+		public delegate void Logger([MarshalAs(UnmanagedType.LPStr)] string text);
+
+		[DllImport("KlakSpout")]
+		public static extern void SetLogger(
+			[MarshalAs(UnmanagedType.FunctionPtr)] Logger logger);
+		[DllImport("KlakSpout")]
+		public static extern void Log(string text);
 
         [DllImport("KlakSpout")]
         public static extern System.IntPtr GetRenderEventFunc();
