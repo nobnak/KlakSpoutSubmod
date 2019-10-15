@@ -7,7 +7,7 @@ namespace Klak.Spout
     /// Spout sender class
     [AddComponentMenu("Klak/Spout/Spout Sender")]
     [RequireComponent(typeof(Camera))]
-    [ExecuteInEditMode]
+    [ExecuteAlways]
     public class SpoutSender : MonoBehaviour {
 
         [SerializeField] bool _clearAlpha = true;
